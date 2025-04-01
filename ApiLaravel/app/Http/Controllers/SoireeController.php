@@ -26,20 +26,38 @@ class SoireeController extends Controller
         return Soiree::create($request->all());
     }
 
-    public function show(Soiree $soiree)
+    public function show($id)
     {
-        return $soiree->load('reservations');
+        $soiree = Soiree::with('reservations')->find($id);
+
+        if (!$soiree) {
+            return response()->json(['message' => 'Soirée non trouvée'], 404);
+        }
+
+        return response()->json($soiree, 200);
     }
 
-    public function update(Request $request, Soiree $soiree)
+    public function update(Request $request, $id)
     {
+        $soiree = Soiree::find($id);
+
+        if (!$soiree) {
+            return response()->json(['message' => 'Soirée non trouvée'], 404);
+        }
+
         $soiree->update($request->all());
-        return $soiree;
+        return response()->json($soiree, 200);
     }
 
-    public function destroy(Soiree $soiree)
+    public function destroy($id)
     {
+        $soiree = Soiree::find($id);
+
+        if (!$soiree) {
+            return response()->json(['message' => 'Soirée non trouvée'], 404);
+        }
+
         $soiree->delete();
-        return response()->json(['message' => 'Soirée supprimée avec succès']);
+        return response()->json(['message' => 'Soirée supprimée avec succès'], 200);
     }
 }
