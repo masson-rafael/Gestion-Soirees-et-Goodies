@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('goodies', function (Blueprint $table) {
             $table->id();
+            $table->string('nom');
+            $table->integer('quantite');
+            $table->text('description')->nullable();
+            $table->decimal('cout_unitaire', 8, 2)->nullable();
             $table->timestamps();
         });
     }
