@@ -7,7 +7,7 @@ import { Soiree } from '../models/soiree.model';
   providedIn: 'root'
 })
 export class GoodieService {
-  private apiUrl = 'http://127.0.0.1:8000/api/soirees'; // URL de ton API Laravel
+  private apiUrl = 'http://127.0.0.1:8000/soirees'; // URL de ton API Laravel
 
   constructor(private http: HttpClient) { }
 

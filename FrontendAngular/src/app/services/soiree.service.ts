@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SoireeService {
-  private apiUrl = 'http://127.0.0.1:8000/api/goodies';
+  private apiUrl = 'http://127.0.0.1:8000/goodies';
 
   constructor(private http: HttpClient) {}
 
