@@ -1,0 +1,41 @@
+<div class="reservation-form-container">
+    <h2>Nouvelle réservation</h2>
+
+    <div class="form-layout">
+        <form [formGroup]="formulaire" (ngSubmit)="onNewReservation()" class="saisie-form">
+            <mat-form-field appearance="fill">
+                <mat-label>Nom de l'étudiant</mat-label>
+                <input matInput [formControl]="nom_etudiant" placeholder="Ex. Jean Dupont" />
+                <mat-error *ngIf="nom_etudiant.hasError('required')">Le nom est requis</mat-error>
+                <mat-error *ngIf="nom_etudiant.hasError('minlength')">Min. 6 caractères</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" [formControl]="email" placeholder="Ex. jean@mail.com" />
+                <mat-error *ngIf="email.hasError('required')">L'email est requis</mat-error>
+                <mat-error *ngIf="email.hasError('email')">Format d'email invalide</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Téléphone</mat-label>
+                <input matInput type="text" [formControl]="telephone" placeholder="Ex. 0601020304" />
+                <mat-error *ngIf="telephone.hasError('required')">Le téléphone est requis</mat-error>
+                <mat-error *ngIf="telephone.hasError('minlength') || telephone.hasError('maxlength')">
+                    Numéro de téléphone invalide
+                </mat-error>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit" [disabled]="formulaire.invalid">
+                Ajouter la réservation
+            </button>
+        </form>
+
+        <div class="visu-form" *ngIf="currentReservation">
+            <h3>Aperçu de la réservation <strong>{{ nomSoiree }}</strong></h3>
+            <p><strong>Nom :</strong> {{ currentReservation.nom_etudiant }}</p>
+            <p><strong>Email :</strong> {{ currentReservation.email }}</p>
+            <p><strong>Téléphone :</strong> {{ currentReservation.telephone }}</p>
+        </div>
+    </div>
+</div>

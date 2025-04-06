@@ -1,1 +1,18 @@
-<p>soirees works!</p>
+<div class="soirees-container">
+    <mat-card *ngFor="let soiree of soirees" class="soiree-card" appearance="outlined">
+        <mat-card-header>
+            <mat-card-title>{{ soiree.nom }}</mat-card-title>
+            <mat-card-subtitle>{{ soiree.lieu }} - {{ soiree.date_heure }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <p>Thème : {{ soiree.theme }}</p>
+            <p>Prix : {{ soiree.prix }}€</p>
+            <p>Capacité max : {{ soiree.capacite_max }}</p>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-flat-button routerLink="/reservations/new/{{soiree.id}}">Réserver</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

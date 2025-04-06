@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
 
 class ReservationController extends Controller
 {
@@ -14,15 +16,19 @@ class ReservationController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+
+        Log::debug('Données reçues :', $request->all());
+
+        $validatedData = $request->validate([
             'nom_etudiant' => 'required|string',
             'email' => 'required|email',
             'telephone' => 'required|string',
             'soiree_id' => 'required|exists:soirees,id',
-            'statut' => 'required|in:Confirmée,En attente,Annulée',
         ]);
 
-        return Reservation::create($request->all());
+        $reservation = Reservation::create($validatedData);
+
+        return response()->json($reservation, 201);
     }
 
     public function show($id)

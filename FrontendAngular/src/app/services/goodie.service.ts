@@ -1,33 +1,33 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Soiree } from '../models/soiree.model';
+import { Goodie } from '../models/goodie.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GoodieService {
-  private apiUrl = 'http://127.0.0.1:8000/soirees'; // URL de ton API Laravel
+  private apiUrl = 'http://127.0.0.1:8000/goodies';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getSoirees(): Observable<Soiree[]> {
-    return this.http.get<Soiree[]>(this.apiUrl);
+  getGoodies(): Observable<Goodie[]> {
+    return this.http.get<Goodie[]>(this.apiUrl);
   }
 
-  getSoireeById(id: number): Observable<Soiree> {
-    return this.http.get<Soiree>(`${this.apiUrl}/${id}`);
+  getGoodieById(id: number): Observable<Goodie> {
+    return this.http.get<Goodie>(`${this.apiUrl}/${id}`);
   }
 
-  addSoiree(soiree: Soiree): Observable<Soiree> {
-    return this.http.post<Soiree>(this.apiUrl, soiree);
+  addGoodie(goodie: Goodie): Observable<Goodie> {
+    return this.http.post<Goodie>(this.apiUrl, goodie);
   }
 
-  updateSoiree(id: number, soiree: Soiree): Observable<Soiree> {
-    return this.http.put<Soiree>(`${this.apiUrl}/${id}`, soiree);
+  updateGoodie(id: number, goodie: Goodie): Observable<Goodie> {
+    return this.http.put<Goodie>(`${this.apiUrl}/${id}`, goodie);
   }
 
-  deleteSoiree(id: number): Observable<void> {
+  deleteGoodie(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

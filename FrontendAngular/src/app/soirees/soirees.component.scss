@@ -1,0 +1,12 @@
+.soirees-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 20px;
+    justify-content: center;
+}
+
+.soiree-card {
+    width: 250px;
+    text-align: center;
+}

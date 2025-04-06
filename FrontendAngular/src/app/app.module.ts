@@ -12,6 +12,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NewReservationComponent } from './new-reservation/new-reservation.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -19,7 +26,8 @@ import { MatIconModule } from '@angular/material/icon';
     HeaderComponent,
     GoodiesComponent,
     ReservationsComponent,
-    SoireesComponent
+    SoireesComponent,
+    NewReservationComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +37,13 @@ import { MatIconModule } from '@angular/material/icon';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
+    MatCardModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

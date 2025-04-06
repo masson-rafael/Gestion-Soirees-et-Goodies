@@ -10,7 +10,7 @@ class Reservation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nom_etudiant', 'email', 'telephone', 'soiree_id', 'date_reservation', 'statut'
+        'nom_etudiant', 'email', 'telephone', 'soiree_id', 'statut'
     ];
 
     public function soiree()

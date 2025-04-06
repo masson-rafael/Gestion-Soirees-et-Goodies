@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('telephone');
             $table->foreignId('soiree_id')->constrained('soirees')->onDelete('cascade');
-            $table->dateTime('date_reservation');
-            $table->enum('statut', ['Confirmée', 'En attente', 'Annulée']);
+            $table->dateTime('date_reservation')->useCurrent();
+            $table->enum('statut', ['Confirmée', 'En attente', 'Annulée'])->default('En attente');
             $table->timestamps();
         });
     }
