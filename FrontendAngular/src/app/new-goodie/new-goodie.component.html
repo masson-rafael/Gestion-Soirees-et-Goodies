@@ -1,1 +1,46 @@
-<p>new-goodie works!</p>
+<div class="goodie-form-container">
+    <h2>Nouveau Goodie</h2>
+
+    <div class="form-layout">
+        <form [formGroup]="formulaire" (ngSubmit)="onNewGoodie()" class="saisie-form">
+            <mat-form-field appearance="fill">
+                <mat-label>Nom</mat-label>
+                <input matInput [formControl]="nom" placeholder="Ex. Bracelet" />
+                <mat-error *ngIf="nom.hasError('required')">Le nom est requis</mat-error>
+                <mat-error *ngIf="nom.hasError('minlength')">Min. 2 caractères</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Quantite</mat-label>
+                <input matInput type="number" [formControl]="quantite" placeholder="Ex. 3" />
+                <mat-error *ngIf="quantite.hasError('required')">La quantité est requise</mat-error>
+                <mat-error *ngIf="quantite.hasError('min')">Min. 2 goodies</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <input matInput type="text" [formControl]="description" placeholder="Ex. Le bracelet pour payer mon cher les shots" />
+                <mat-error *ngIf="description.hasError('required')">La description est requise</mat-error>
+                <mat-error *ngIf="description.hasError('minlength')">Min. 10 caractères</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Coût unitaire</mat-label>
+                <input matInput type="number" [formControl]="cout_unitaire" placeholder="Ex. 1" />
+                <mat-error *ngIf="cout_unitaire.hasError('min')">Min. 0 €</mat-error>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit" [disabled]="formulaire.invalid">
+                Ajouter le goodie
+            </button>
+        </form>
+
+        <div class="visu-form" *ngIf="currentGoodie">
+            <h3>Aperçu du nouveau Goodie</h3>
+            <p><strong>Nom :</strong> {{ currentGoodie.nom }}</p>
+            <p><strong>Quantité :</strong> {{ currentGoodie.quantite }}</p>
+            <p><strong>Description :</strong> {{ currentGoodie.description }}</p>
+            <p><strong>Coût unitaire :</strong> {{ currentGoodie.cout_unitaire }}</p>
+        </div>
+    </div>
+</div>

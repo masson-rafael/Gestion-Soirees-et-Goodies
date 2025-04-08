@@ -55,7 +55,7 @@ export class NewReservationComponent {
     this.reservationService.addReservation(newReservation).subscribe({
       next: reservation =>
       {
-        this.router.navigateByUrl('/')
+        this.router.navigateByUrl('/reservations');
       },
       error: err =>
       {
