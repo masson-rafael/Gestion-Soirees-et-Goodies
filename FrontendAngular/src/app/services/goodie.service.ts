@@ -23,8 +23,8 @@ export class GoodieService {
     return this.http.post<Goodie>(this.apiUrl, goodie);
   }
 
-  updateGoodie(id: number, goodie: Goodie): Observable<Goodie> {
-    return this.http.put<Goodie>(`${this.apiUrl}/${id}`, goodie);
+  updateGoodie(goodie: Goodie): Observable<Goodie> {
+    return this.http.put<Goodie>(`${this.apiUrl}/${goodie.id}`, goodie);
   }
 
   deleteGoodie(id: number): Observable<void> {

@@ -1,1 +1,85 @@
-<p>goodies works!</p>
+<section>
+    <div class="example-button-row">
+        <a mat-raised-button routerLink="/goodies/new">Ajouter un goodie</a>
+    </div>
+</section>
+
+<mat-form-field>
+    <mat-label>Filtrer</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Jean Dupont" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+            <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nom">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
+            <td mat-cell *matCellDef="let row"> {{row.nom}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="quantite">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantité </th>
+            <td mat-cell *matCellDef="let row">
+                <div class="quantity-editor">
+                    @if (!row.editMode) {
+                    <span>{{row.quantite}}</span>
+                    }
+                    @if (row.editMode) {
+                    <mat-form-field appearance="outline" class="quantity-input">
+                        <input matInput type="number" [(ngModel)]="row.newQuantite" min="0">
+                    </mat-form-field>
+                    }
+
+                    <div class="action-buttons">
+                        @if (!row.editMode) {
+                        <button mat-icon-button color="primary" (click)="editQuantity(row)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        }
+                        @if (row.editMode) {
+                        <button mat-icon-button color="primary" (click)="saveQuantity(row)">
+                            <mat-icon>save</mat-icon>
+                        </button>
+                        <button mat-icon-button color="warn" (click)="cancelEdit(row)">
+                            <mat-icon>cancel</mat-icon>
+                        </button>
+                        }
+                    </div>
+                </div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+            <td mat-cell *matCellDef="let row"> {{row.description}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cout">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Cout </th>
+            <td mat-cell *matCellDef="let row"> {{row.cout_unitaire}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+            <td mat-cell *matCellDef="let row">
+                <button mat-icon-button (click)="deleteGoodie(row.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>

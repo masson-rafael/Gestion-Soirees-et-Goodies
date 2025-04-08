@@ -19,6 +19,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NewReservationComponent } from './new-reservation/new-reservation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { NewGoodieComponent } from './new-goodie/new-goodie.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,8 @@ import { MatDividerModule } from '@angular/material/divider';
     GoodiesComponent,
     ReservationsComponent,
     SoireesComponent,
-    NewReservationComponent
+    NewReservationComponent,
+    NewGoodieComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +49,9 @@ import { MatDividerModule } from '@angular/material/divider';
     ReactiveFormsModule,
     FormsModule,
     MatDividerModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

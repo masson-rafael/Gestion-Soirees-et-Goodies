@@ -35,14 +35,8 @@ class GoodieController extends Controller
         return response()->json($goodie, 200);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Goodie $goodie)
     {
-        $goodie = Goodie::find($id);
-
-        if (!$goodie) {
-            return response()->json(['message' => 'Goodie non trouvé'], 404);
-        }
-
         $goodie->update($request->all());
         return response()->json($goodie, 200);
     }
