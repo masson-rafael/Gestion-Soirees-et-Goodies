@@ -75,6 +75,7 @@ Ce projet est une application web de gestion pour un Bureau des Étudiants (BDE)
    Copier le fichier .env.example en .env :
 
    ```bash
+   cd ApiLaravel
    cp .env.example .env
    ```
    
